@@ -44,7 +44,6 @@ class Edge {
         this.from = from;
         this.to = to;
         this.weight = weight;
-        console.log(weight);
     }
 
     draw() {
@@ -112,7 +111,7 @@ class Edge {
         let mx = (x1 + x2) / 2.0;
         let my = (y1 + y2) / 2.0;
         context.font = "20px Roboto medium";
-        context.fillText(this.weight, mx - ny * R, my + nx  * R);
+        context.fillText(this.weight, mx - ny * R, my + nx * R);
     }
 }
 
