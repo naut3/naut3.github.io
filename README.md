@@ -2,4 +2,4 @@
 
 ## ビジュアライザ
 
-* [グラフの簡易的なビジュアライザ](./graph_visualizer/visualizer.html)
+* [グラフの簡易的なビジュアライザ](./visualizer_graph/vis.html)
