@@ -1,6 +1,7 @@
 # 作成物置き場
 
-* [実際のPageへのリンク](https://naut3.github.io/)
+* [実際に表示されるページ](https://naut3.github.io/)
+* [githubへのリンク](https://github.com/naut3/naut3.github.io)
 
 ## ビジュアライザ
 
