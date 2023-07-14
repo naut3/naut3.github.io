@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Graph Visualizer</title>
+</head>
+
+<body>
+    <p>
+        <label for="input">
+            Input:
+        </label>
+        <br>
+        <textarea id="input" rows="4" style="width: 600px;" regenerate="true">
+4 3
+1 2 2
+2 3 3
+4 1 1
+        </textarea>
+    </p>
+
+    <p>
+        Graph Settings:
+        <br>
+        <input type="radio" name="indexed" value="0-indexed" regenerate="true"> 0-indexed
+        <input type="radio" name="indexed" value="1-indexed" checked="checked" regenerate="true"> 1-indexed
+        <br>
+        <input type="radio" name="direction" value="directed" redraw="true"> directed
+        <input type="radio" name="direction" value="undirected" checked="checked" redraw="true"> undirected
+        <br>
+        <input type="radio" name="weight" value="weighted" regenerate="true"> weighted
+        <input type="radio" name="weight" value="unweighted" checked="checked" regenerate="true"> unweighted
+    </p>
+
+    <p>
+        Visualize Settings:
+        <br>
+        <input type="checkbox" name="show_index" redraw="true"> Show Index <select id="position" redraw="true">
+            <option value="UpL"> Upper Left </option>
+            <option value="R"> Right </option>
+            <option value="Lo"> Lower </option>
+        </select>
+        <input type="checkbox" name="show_edge_weight" redraw="true"> Show Edge Weights
+        <br>
+        Arrangement:
+        <input type="radio" name="arrangement" value="sorted" checked="checked" regenerate="true"> Sorted
+        <input type="radio" name="arrangement" value="random" regenerate="true"> Random
+    </p>
+
+    <p>
+        Output:
+        <br>
+        <canvas id="canvas" width="600" , height="400"></canvas>
+    </p>
+
+    <script src="src/vis.js"></script>
+</body>
+
+
+</html>
