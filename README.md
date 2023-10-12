@@ -17,6 +17,6 @@
 
 ## WasmとJavaScriptでのパフォーマンスを比較してみる
 
-* [TSPを2-opt法で解く](./comp_wasm_js/index.html)
+* [TSPを2-opt法で解く](https://github.com/naut3/naut3.github.io/blob/main/comp_wasm_js/index.html)
   * RustからコンパイルしたWasmと、それを真似て書いたJavaScriptで巡回セールスマン問題を2-opt法で同じ実行時間制限で解いて、解がどのくらい異なるかを見てみる。
   * 都市の数を $N$ として、貪欲解の構成に $O(N^2)$ 必要なので、都市の数は実用的には5000くらいを上限として動かせると思う。
