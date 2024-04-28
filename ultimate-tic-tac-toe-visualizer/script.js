@@ -187,6 +187,12 @@ function update_visualizer() {
     turn_counter.innerText = value;
 
     visualize(present_log[value]);
+
+    if (value >= 1) {
+        let y = parse_input()[value - 1][0];
+        let x = parse_input()[value - 1][1];
+        table.rows[y].cells[x].style.backgroundColor = "rgba(255, 255, 0, 0.5)";
+    }
 }
 
 input_form.value = "8 5\n8 6\n7 1\n4 4\n3 5\n0 7\n1 5\n5 6\n8 2\n8 8\n7 8\n4 8\n3 6\n2 1\n7 3\n3 0\n1 2\n5 8\n6 8\n0 6\n2 0\n8 1\n8 3\n6 0\n0 2\n1 6\n4 0\n3 2\n2 7\n7 4\n4 5\n3 8\n0 8\n1 7\n5 3\n6 2\n1 8\n2 4\n8 4\n2 8\n7 6\n3 1\n0 3\n0 1\n2 3\n7 2\n6 6\n1 0\n0 5\n6 7\n1 3\n8 0\n6 1\n2 2\n8 7\n5 5\n7 7\n3 3"
