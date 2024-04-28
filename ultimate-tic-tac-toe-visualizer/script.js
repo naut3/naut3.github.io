@@ -84,11 +84,57 @@ function visualize(board_information) {
             }
 
             else if (((legal_movement >> BigInt(large_flatten(y, x))) & BigInt(1)) == BigInt(1)) {
-                table.rows[y].cells[x].style.backgroundColor = "rgba(255, 0, 0, 0.25)";
+                table.rows[y].cells[x].style.backgroundColor = "rgba(0, 255, 0, 0.25)";
             }
         }
     }
 
+    // 揃った小盤面の色を塗る
+    let origin_xs = [0, 3, 6, 0, 3, 6, 0, 3, 6];
+    let origin_ys = [0, 0, 0, 3, 3, 3, 6, 6, 6];
+    let dxs = [[0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 0, 0], [1, 1, 1], [2, 2, 2], [0, 1, 2], [2, 1, 0]];
+    let dys = [[0, 0, 0], [1, 1, 1], [2, 2, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2]];
+
+    for (let i = 0; i < 9; i++) {
+        let oy = origin_ys[i];
+        let ox = origin_xs[i];
+
+        for (let j = 0; j < 8; j++) {
+            let cnt_first = 0;
+            let cnt_second = 0;
+
+            for (let k = 0; k < 3; k++) {
+                let dy = dys[j][k];
+                let dx = dxs[j][k];
+
+                let y = oy + dy;
+                let x = ox + dx;
+
+                if (((board_first >> BigInt(large_flatten(y, x))) & BigInt(1)) == BigInt(1)) {
+                    cnt_first += 1;
+                }
+
+                else if (((board_second >> BigInt(large_flatten(y, x))) & BigInt(1)) == BigInt(1)) {
+                    cnt_second += 1;
+                }
+            }
+
+            if (cnt_first == 3) {
+                for (let dx = 0; dx < 3; dx++) {
+                    for (let dy = 0; dy < 3; dy++) {
+                        table.rows[oy + dy].cells[ox + dx].style.backgroundColor = "rgba(255, 0, 0, 0.25)";
+                    }
+                }
+            }
+            else if (cnt_second == 3) {
+                for (let dx = 0; dx < 3; dx++) {
+                    for (let dy = 0; dy < 3; dy++) {
+                        table.rows[oy + dy].cells[ox + dx].style.backgroundColor = "rgba(0, 0, 255, 0.25)";
+                    }
+                }
+            }
+        }
+    }
 }
 
 function calculate_game_states(actions) {
@@ -143,4 +189,4 @@ function update_visualizer() {
     visualize(present_log[value]);
 }
 
-input_form.value = "8 5\n8 6\n7 1\n4 4\n3 5\n0 7\n1 5\n5 6\n8 2\n8 8\n7 8\n4 8\n3 6\n2 1\n7 3\n3 0\n1 2\n5 8\n6 8\n0 6\n2 0\n8 1\n8 3\n6 0\n0 2\n1 6\n4 0\n3 2\n2 7\n7 4\n4 5\n3 8\n0 8\n1 7\n5 3\n6 2\n1 8\n2 4\n8 4\n2 8\n7 6\n3 1\n0 3\n0 1\n2 3\n7 2\n6 6\n1 0\n0 5\n6 7\n1 3\n8 0\n6 1\n2 2\n8 7\n5 5\n7 7\n3 3\n1 1"
+input_form.value = "8 5\n8 6\n7 1\n4 4\n3 5\n0 7\n1 5\n5 6\n8 2\n8 8\n7 8\n4 8\n3 6\n2 1\n7 3\n3 0\n1 2\n5 8\n6 8\n0 6\n2 0\n8 1\n8 3\n6 0\n0 2\n1 6\n4 0\n3 2\n2 7\n7 4\n4 5\n3 8\n0 8\n1 7\n5 3\n6 2\n1 8\n2 4\n8 4\n2 8\n7 6\n3 1\n0 3\n0 1\n2 3\n7 2\n6 6\n1 0\n0 5\n6 7\n1 3\n8 0\n6 1\n2 2\n8 7\n5 5\n7 7\n3 3"
