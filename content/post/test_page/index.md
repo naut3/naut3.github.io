@@ -1,6 +1,6 @@
 ---
 title: テストページ
-description: MarkdownやLaTexの挙動を確認するテスト用のページ。
+description: MarkdownやLaTeXの挙動を確認するテスト用のページ。
 date: 2024-08-04 13:12:32.142 +0000
 categories:
     - test
