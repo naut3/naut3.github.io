@@ -30,6 +30,7 @@ assert_eq!(counter[&1], 1);
 counter.entry(2).or_default();
 assert_eq!(counter[&2], 0);
 
+// or_insert と or_insert_with の違いを見る
 let mut a = 5;
 let f = |n: &mut usize| {
     *n += 1;
@@ -50,7 +51,36 @@ assert_eq!(a, 9);
 assert_eq!(counter[&5], 8);
 ```
 
-### ラベル付きの `break` 等の便利な制御構文
+### if let と while let
+
+* [The Rust Programming Language - if let](https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html)
+* [The Rust Programming Language - while let](https://doc.rust-lang.org/rust-by-example/flow_control/while_let.html)
+
+```rust
+// N: 頂点数, graph: Vec<Vec<usize>> の隣接リスト での幅優先探索
+let mut seen = vec![false; N];
+let mut dist = vec![usize::MAX; N];
+let mut q = std::collections::VecDeque::new();
+
+let src = 0;
+q.push_back(src);
+seen[src] = true;
+dist[src] = 0;
+
+while let Some(u) = q.pop_front() {
+    for &v in graph[u].iter() {
+        if seen[v] {
+            continue;
+        }
+
+        q.push_back(v);
+        seen[v] = true;
+        dist[v] = dist[u] + 1;
+    }
+}
+```
+
+### ラベル付きの break
 
 * [Rust By Example - Nesting and labels](https://doc.rust-lang.org/rust-by-example/flow_control/loop/nested.html)
 * [Rust By Example - Returning from loops](https://doc.rust-lang.org/rust-by-example/flow_control/loop/return.html)
@@ -87,10 +117,13 @@ let mut isok = false;
 
 ## 少しだけ実行時間制限を超過するときにできること
 
-### HashMap, HashSet
+### FxHashMap, FxHashSetの利用
 
 * Rustがデフォルトで使用するアルゴリズムよりも高速なハッシュアルゴリズムを使用した HashMap を利用する。
 * [rustc-hash](https://docs.rs/rustc-hash/1.1.0/rustc_hash/)
+* [ABC339 G - Smaller Sum](https://atcoder.jp/contests/abc339/tasks/abc339_g) では動的2次元Binary Indexed Treeを使った解法において、FxHashMapを使うとACできた。
+  * [FxHashMapを使った提出 3450ms](https://atcoder.jp/contests/abc339/submissions/56408883)
+  * [FxHashMapを使わない提出 TLE](https://atcoder.jp/contests/abc339/submissions/56408941)
 
 ```rust
 use rustc_hash::FxHashMap;
@@ -99,6 +132,11 @@ let mut map: FxHashMap<u32, char> = FxHashMap::default();
 map.insert(1, 'b');
 ```
 
+### 2次元の vector を1次元にする
+
+* $H$ 行 $W$ 列の行列を $H \times W$ 個の要素の `vector` に変換するような状況では、1次元化するのと一緒に以下のような関数を書いておくと、少し便利になる。
+  * 2次元座標を1次元座標に変換する `let flatten = |y: usize, x: usize| y * W + x;`
+  * 1次元座標を2次元座標に変換する `let unflatten = |p: usize| (p / W, p % W);`
 
 ## ミスを減らすために
 
