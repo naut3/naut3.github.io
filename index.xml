@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>naut3's blog</title><link>https://naut3.github.io/</link><description>Recent content on naut3's blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 05 Aug 2024 14:47:21 +0000</lastBuildDate><atom:link href="https://naut3.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>💡Tips</title><link>https://naut3.github.io/p/tips/</link><pubDate>Mon, 05 Aug 2024 14:47:21 +0000</pubDate><guid>https://naut3.github.io/p/tips/</guid><description>&lt;h2 id="便利な書き方">便利な書き方
+&lt;/h2>&lt;h3 id="map-と-entry">Map と Entry
+&lt;/h3>&lt;ul>
+&lt;li>&lt;a class="link" href="https://doc.rust-lang.org/book/ch08-03-hash-maps.html#adding-a-key-and-value-only-if-a-key-isnt-present" target="_blank" rel="noopener"
+>The Rust Programming Language - Storing Keys with Associated Values in Hash Maps&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="k">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">std&lt;/span>::&lt;span class="n">collections&lt;/span>::&lt;span class="n">HashMap&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">counter&lt;/span>: &lt;span class="nc">HashMap&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">u32&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">usize&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">HashMap&lt;/span>::&lt;span class="n">default&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_insert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">],&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_insert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">],&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_default&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">],&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// or_insert と or_insert_with の違いを見る
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">n&lt;/span>: &lt;span class="kp">&amp;amp;&lt;/span>&lt;span class="nc">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">usize&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">n&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">n&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">};&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_insert_with&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">||&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">],&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">6&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_insert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">],&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">7&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_insert_with&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">||&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_insert_with&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">||&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c1">// `f` is not executed here.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">or_insert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c1">// `f` is executed here.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">9&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">counter&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">],&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="if-let-と-while-let">if let と while let
+&lt;/h3>&lt;ul>
+&lt;li>&lt;a class="link" href="https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html" target="_blank" rel="noopener"
+>The Rust Programming Language - if let&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://doc.rust-lang.org/rust-by-example/flow_control/while_let.html" target="_blank" rel="noopener"
+>The Rust Programming Language - while let&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// N: 頂点数, graph: Vec&amp;lt;Vec&amp;lt;usize&amp;gt;&amp;gt; の隣接リスト での幅優先探索
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">seen&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="fm">vec!&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="kc">false&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">];&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">dist&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="fm">vec!&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="kt">usize&lt;/span>::&lt;span class="no">MAX&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">];&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">q&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">std&lt;/span>::&lt;span class="n">collections&lt;/span>::&lt;span class="n">VecDeque&lt;/span>::&lt;span class="n">new&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">src&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">q&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">src&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">seen&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">src&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">dist&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">src&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">while&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">Some&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">q&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">pop_front&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">in&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">graph&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">iter&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">seen&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">continue&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">q&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">seen&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">dist&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">dist&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="ラベル付きの-break">ラベル付きの break
+&lt;/h3>&lt;ul>
+&lt;li>&lt;a class="link" href="https://doc.rust-lang.org/rust-by-example/flow_control/loop/nested.html" target="_blank" rel="noopener"
+>Rust By Example - Nesting and labels&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://doc.rust-lang.org/rust-by-example/flow_control/loop/return.html" target="_blank" rel="noopener"
+>Rust By Example - Returning from loops&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1000&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">isok&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">false&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="na">&amp;#39;OUTER&lt;/span>: &lt;span class="nc">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">in&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">..&lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">j&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">in&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">..&lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">isok&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">|=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">hoge&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">j&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">isok&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nl">&amp;#39;OUTER&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// よくある書き方
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// for i in 0..N {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// for j in 0..N {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// isok |= hoge(i, j);
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// if isok {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// break;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// if isok {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// break;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// }
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="少しだけ実行時間制限を超過するときにできること">少しだけ実行時間制限を超過するときにできること
+&lt;/h2>&lt;h3 id="fxhashmap-fxhashsetの利用">FxHashMap, FxHashSetの利用
+&lt;/h3>&lt;ul>
+&lt;li>Rustがデフォルトで使用するアルゴリズムよりも高速なハッシュアルゴリズムを使用した HashMap を利用する。&lt;/li>
+&lt;li>&lt;a class="link" href="https://docs.rs/rustc-hash/1.1.0/rustc_hash/" target="_blank" rel="noopener"
+>rustc-hash&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://atcoder.jp/contests/abc339/tasks/abc339_g" target="_blank" rel="noopener"
+>ABC339 G - Smaller Sum&lt;/a> では動的2次元Binary Indexed Treeを使った解法において、FxHashMapを使うとACできた。
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://atcoder.jp/contests/abc339/submissions/56408883" target="_blank" rel="noopener"
+>FxHashMapを使った提出 3450ms&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://atcoder.jp/contests/abc339/submissions/56408941" target="_blank" rel="noopener"
+>FxHashMapを使わない提出 TLE&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="k">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">rustc_hash&lt;/span>::&lt;span class="n">FxHashMap&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">map&lt;/span>: &lt;span class="nc">FxHashMap&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">u32&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">char&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">FxHashMap&lt;/span>::&lt;span class="n">default&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">insert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="sc">&amp;#39;b&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2次元の-vector-を1次元にする">2次元の vector を1次元にする
+&lt;/h3>&lt;ul>
+&lt;li>$H$ 行 $W$ 列の行列を $H \times W$ 個の要素の &lt;code>vector&lt;/code> に変換するような状況では、1次元化するのと一緒に以下のような関数を書いておくと、少し便利になる。
+&lt;ul>
+&lt;li>2次元座標を1次元座標に変換する &lt;code>let flatten = |y: usize, x: usize| y * W + x;&lt;/code>&lt;/li>
+&lt;li>1次元座標を2次元座標に変換する &lt;code>let unflatten = |p: usize| (p / W, p % W);&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="ミスを減らすために">ミスを減らすために
+&lt;/h2>&lt;h3 id="を上手に使う">{}を上手に使う
+&lt;/h3>&lt;p>下記のように、{} を上手く使うとミスを減らせる。&lt;/p>
+&lt;ul>
+&lt;li>可変性が必要な場所だけ可変にできる&lt;/li>
+&lt;li>繰り返し同じ名前の変数を使うときに初期化を忘れるといった凡ミスを防止できる&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="n">proconio&lt;/span>::&lt;span class="fm">input!&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="n">N&lt;/span>: &lt;span class="kt">usize&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">M&lt;/span>: &lt;span class="kt">usize&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">edges&lt;/span>: &lt;span class="p">[(&lt;/span>&lt;span class="n">Usize1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Usize1&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">M&lt;/span>&lt;span class="p">]}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">graph&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="fm">vec!&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="fm">vec!&lt;/span>&lt;span class="p">[];&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">N&lt;/span>&lt;span class="p">];&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">in&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">edges&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">push&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">push&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">u&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">g&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">};&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>ABC365 感想・振り返り</title><link>https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</link><pubDate>Sun, 04 Aug 2024 13:45:05 +0000</pubDate><guid>https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</guid><description>&lt;h2 id="atcoder-beginner-contest-365">AtCoder Beginner Contest 365
+&lt;/h2>&lt;p>&lt;a class="link" href="https://atcoder.jp/contests/abc365" target="_blank" rel="noopener"
+>コンテストページ&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>23分40秒で5完して、468位でした。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/image.png"
+width="443"
+height="320"
+srcset="https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/image_hu1975067502046846702.png 480w, https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/image_hu11176230412750619192.png 1024w"
+loading="lazy"
+alt="コンテスト成績証"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="332px"
+>&lt;/p>
+&lt;h3 id="a問題">A問題
+&lt;/h3>&lt;ul>
+&lt;li>うるう年の条件が問題文で与えられるので、西暦 $Y$ 年の日数を求めてください。&lt;/li>
+&lt;li>問題文通りに実装すれば OKです。&lt;/li>
+&lt;/ul>
+&lt;h3 id="b問題">B問題
+&lt;/h3>&lt;ul>
+&lt;li>長さ $N$ の相異なる項からなる数列 $A$ が与えられます。$A$ の中で $2$番目に大きい要素は何番目の要素かを求めてください。&lt;/li>
+&lt;li>上手くやれば $O(N)$ でもできますが、$N \leq 100$ なので、$A$をソートした配列$B$の後ろから二番目の要素と一致するもののインデックスを出力すればよいです。&lt;/li>
+&lt;/ul>
+&lt;p>ここからは少し丁寧に振り返ります。&lt;/p>
+&lt;h3 id="c問題">C問題
+&lt;/h3>&lt;h4 id="問題概要">問題概要
+&lt;/h4>&lt;ul>
+&lt;li>$N$ 人がイベントに参加し、それぞれ交通費が$A_i$円かかります。&lt;/li>
+&lt;li>交通費の補助額を上限$x$円と設定し、人$i$には$\min{(x, A_i)}$を支給します。&lt;/li>
+&lt;li>予算が$M$円なので、$N$人に渡す補助額の総和を$M$円以下にしたいです。&lt;/li>
+&lt;li>$x$を最大で何円にできるかを求めてください。ただし、上限が存在しない場合、そのことを出力します。&lt;/li>
+&lt;li>$N \leq 2 \times 10^{5}, M \leq 2 \times 10^{14}$&lt;/li>
+&lt;/ul>
+&lt;h4 id="考えたこと">考えたこと
+&lt;/h4>&lt;p>まず、上限が無限に大きくできるときは、どのような条件が成り立つかを考えます。&lt;/p>
+&lt;p>$x \geq \max{A_i}$ を満たす$x$では、補助額の総和は同じです。したがって、$x = \max{A_i}$ のとき予算をオーバーしないなら、上限は存在しません。また、同様に上限が存在するなら必ず、$x &amp;lt; \max{A_i}$が成り立ちます。&lt;/p>
+&lt;p>上限が存在し、それを$m$であるとします。$[0, \max{A_i})$の範囲で二分探索を行えば、補助額の総和が$M$円以下の補助額の上限値の最大値は、$m$と一致します。したがって、$O(N \log{\max{A_i}})$ で答えが計算できます。&lt;/p>
+&lt;h3 id="d問題">D問題
+&lt;/h3>&lt;h4 id="問題概要-1">問題概要
+&lt;/h4>&lt;ul>
+&lt;li>2人のプレイヤーがじゃんけんをします。相手が出した手を事前に知っていて、それは$S = S_1 S_2 \dots S_N$で表されます。&lt;/li>
+&lt;li>私は、以下の条件を満たすように手を出す必要があります。それを満たすような手の列の内、じゃんけんで勝った回数の最大値を計算してください。
+&lt;ul>
+&lt;li>私は一度もじゃんけんに負けない。&lt;/li>
+&lt;li>私が$i$回目に出す手と$i + 1$回目に出す手は異なる。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>$N \leq 2 \times 10^{5}$&lt;/li>
+&lt;/ul>
+&lt;h4 id="考えたこと-1">考えたこと
+&lt;/h4>&lt;p>1手目から順に出す手を決めていくとします。このとき、$i$手目を制限するのは、相手の手と自分が$i - 1$手目だけです。&lt;/p>
+&lt;p>そこで、$i$ 手目がグー、チョキ、パーそれぞれでの勝った回数の最大値が計算できれば$i + 1$手目でグー、チョキ、パーそれぞれでの勝った回数の最大値が計算できます。&lt;/p>
+&lt;p>これは適当な動的計画法で$O(N)$で可能です。&lt;a class="link" href="https://atcoder.jp/contests/abc365/submissions/56260751" target="_blank" rel="noopener"
+>提出コード&lt;/a>&lt;/p>
+&lt;h3 id="e問題">E問題
+&lt;/h3>&lt;h4 id="問題概要-2">問題概要
+&lt;/h4>&lt;ul>
+&lt;li>長さ$N$の数列$A = (A_1, A_2, \dots, A_N)$が与えられます。以下の値を計算してください。&lt;/li>
+&lt;/ul>
+&lt;p>$$
+\sum_{i = 1}^{N - 1} \sum_{j = i + 1}^{N} {A_i \oplus A_{i + 1} \oplus \dots \oplus A_{j}}
+$$&lt;/p>
+&lt;ul>
+&lt;li>$N \leq 2\times 10^{5}, 1 \leq A_i \leq 10^{8}$&lt;/li>
+&lt;/ul>
+&lt;h4 id="考えたこと-2">考えたこと
+&lt;/h4>&lt;p>まず、各bit毎に考え、それらを後から合算して答えを計算することにします。&lt;/p>
+&lt;p>$i$ bit 目を取り出して $B_1, B_2, B_3, \dots, B_N (B_j = 0, 1)$とします。&lt;/p>
+&lt;p>$k$ 項目を右端とするような部分排他的論理和について考えます。きちんと列挙すると、$\oplus_{i=1}^{k} B_i, \oplus_{i=2}^{k} B_i, \dots, \oplus_{i=k-1}^{k} B_i$のように書けます。&lt;/p>
+&lt;p>同様に、$k + 1$ 項目を右端とするような部分排他的論理和について考えます。きちんと列挙すると、$\oplus_{i=1}^{k+1} B_i, \oplus_{i=2}^{k+1} B_i, \dots, \oplus_{i=k}^{k+1} B_i$のように書けます。&lt;/p>
+&lt;p>それぞれ $S_k, S_{k + 1}$ とします。$S_{k + 1} = \lbrace a \oplus B_{k+1} | a \in S_k \rbrace \cup \lbrace B_k \oplus B_{k + 1} \rbrace$ が成り立ちます。(重複した値も別々に考えています)&lt;/p>
+&lt;p>これら部分排他的論理和は当然 $0, 1$ のいずれかしか取らないので、$\text{dp} \lbrack i \rbrack \lbrack T | F \rbrack$ を$i$項目を右端とする部分排他的論理和で$T, F$の数であるとするような動的計画法によって、$O(N)$ で計算できます。答えは$\displaystyle \sum_{i} \text{dp} \lbrack i \rbrack \lbrack T \rbrack$ です。単一項の部分和の処理によって、少し変わる場合がありますが、適当に補正すればよいです。&lt;/p>
+&lt;p>これで、全体で$O(N \log{A})$ で答えを計算でき、これは十分実行時間制限に間に合います。&lt;a class="link" href="https://atcoder.jp/contests/abc365/submissions/56271056" target="_blank" rel="noopener"
+>提出コード&lt;/a>&lt;/p></description></item><item><title>テストページ</title><link>https://naut3.github.io/p/%E3%83%86%E3%82%B9%E3%83%88%E3%83%9A%E3%83%BC%E3%82%B8/</link><pubDate>Sun, 04 Aug 2024 13:12:32 +0000</pubDate><guid>https://naut3.github.io/p/%E3%83%86%E3%82%B9%E3%83%88%E3%83%9A%E3%83%BC%E3%82%B8/</guid><description>&lt;h2 id="見出し2">見出し2
+&lt;/h2>&lt;h3 id="見出し3">見出し3
+&lt;/h3>&lt;h4 id="見出し4">見出し4
+&lt;/h4>&lt;p>インライン数式が書ける。 $\displaystyle\sum_{i = 1}^{n} i = \frac{n(n + 1)}{2}$&lt;/p>
+&lt;ul>
+&lt;li>箇条書きのところでも書ける。 $e^{i \pi} + 1 = 0$&lt;/li>
+&lt;/ul>
+&lt;p>ディスプレイ数式モードでも数式を書ける。&lt;/p>
+&lt;p>$$
+f(x) = \frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp{\left( -\frac{(x - \mu)^2}{2 \sigma^2} \right)}
+$$&lt;/p>
+&lt;p>コードブロックもある。インライン表示は右の通り。&lt;code>println!(&amp;quot;Hello World!&amp;quot;)&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a class="link" href="https://github.com/naut3/naut3.github.io" target="_blank" rel="noopener"
+>リンク&lt;/a>&lt;/p></description></item><item><title>Archives</title><link>https://naut3.github.io/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://naut3.github.io/archives/</guid><description/></item><item><title>Links</title><link>https://naut3.github.io/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://naut3.github.io/links/</guid><description/></item><item><title>Search</title><link>https://naut3.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://naut3.github.io/search/</guid><description/></item></channel></rss>

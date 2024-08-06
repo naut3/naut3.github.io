@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Test on naut3's blog</title><link>https://naut3.github.io/categories/test/</link><description>Recent content in Test on naut3's blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 04 Aug 2024 13:12:32 +0000</lastBuildDate><atom:link href="https://naut3.github.io/categories/test/index.xml" rel="self" type="application/rss+xml"/><item><title>テストページ</title><link>https://naut3.github.io/p/%E3%83%86%E3%82%B9%E3%83%88%E3%83%9A%E3%83%BC%E3%82%B8/</link><pubDate>Sun, 04 Aug 2024 13:12:32 +0000</pubDate><guid>https://naut3.github.io/p/%E3%83%86%E3%82%B9%E3%83%88%E3%83%9A%E3%83%BC%E3%82%B8/</guid><description>&lt;h2 id="見出し2">見出し2
+&lt;/h2>&lt;h3 id="見出し3">見出し3
+&lt;/h3>&lt;h4 id="見出し4">見出し4
+&lt;/h4>&lt;p>インライン数式が書ける。 $\displaystyle\sum_{i = 1}^{n} i = \frac{n(n + 1)}{2}$&lt;/p>
+&lt;ul>
+&lt;li>箇条書きのところでも書ける。 $e^{i \pi} + 1 = 0$&lt;/li>
+&lt;/ul>
+&lt;p>ディスプレイ数式モードでも数式を書ける。&lt;/p>
+&lt;p>$$
+f(x) = \frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp{\left( -\frac{(x - \mu)^2}{2 \sigma^2} \right)}
+$$&lt;/p>
+&lt;p>コードブロックもある。インライン表示は右の通り。&lt;code>println!(&amp;quot;Hello World!&amp;quot;)&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">mut&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">assert_eq!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a class="link" href="https://github.com/naut3/naut3.github.io" target="_blank" rel="noopener"
+>リンク&lt;/a>&lt;/p></description></item></channel></rss>

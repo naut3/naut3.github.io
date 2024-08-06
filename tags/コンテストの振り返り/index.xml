@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>コンテストの振り返り on naut3's blog</title><link>https://naut3.github.io/tags/%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</link><description>Recent content in コンテストの振り返り on naut3's blog</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 04 Aug 2024 13:45:05 +0000</lastBuildDate><atom:link href="https://naut3.github.io/tags/%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/index.xml" rel="self" type="application/rss+xml"/><item><title>ABC365 感想・振り返り</title><link>https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</link><pubDate>Sun, 04 Aug 2024 13:45:05 +0000</pubDate><guid>https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/</guid><description>&lt;h2 id="atcoder-beginner-contest-365">AtCoder Beginner Contest 365
+&lt;/h2>&lt;p>&lt;a class="link" href="https://atcoder.jp/contests/abc365" target="_blank" rel="noopener"
+>コンテストページ&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>23分40秒で5完して、468位でした。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/image.png"
+width="443"
+height="320"
+srcset="https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/image_hu1975067502046846702.png 480w, https://naut3.github.io/p/abc365-%E6%84%9F%E6%83%B3%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A/image_hu11176230412750619192.png 1024w"
+loading="lazy"
+alt="コンテスト成績証"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="332px"
+>&lt;/p>
+&lt;h3 id="a問題">A問題
+&lt;/h3>&lt;ul>
+&lt;li>うるう年の条件が問題文で与えられるので、西暦 $Y$ 年の日数を求めてください。&lt;/li>
+&lt;li>問題文通りに実装すれば OKです。&lt;/li>
+&lt;/ul>
+&lt;h3 id="b問題">B問題
+&lt;/h3>&lt;ul>
+&lt;li>長さ $N$ の相異なる項からなる数列 $A$ が与えられます。$A$ の中で $2$番目に大きい要素は何番目の要素かを求めてください。&lt;/li>
+&lt;li>上手くやれば $O(N)$ でもできますが、$N \leq 100$ なので、$A$をソートした配列$B$の後ろから二番目の要素と一致するもののインデックスを出力すればよいです。&lt;/li>
+&lt;/ul>
+&lt;p>ここからは少し丁寧に振り返ります。&lt;/p>
+&lt;h3 id="c問題">C問題
+&lt;/h3>&lt;h4 id="問題概要">問題概要
+&lt;/h4>&lt;ul>
+&lt;li>$N$ 人がイベントに参加し、それぞれ交通費が$A_i$円かかります。&lt;/li>
+&lt;li>交通費の補助額を上限$x$円と設定し、人$i$には$\min{(x, A_i)}$を支給します。&lt;/li>
+&lt;li>予算が$M$円なので、$N$人に渡す補助額の総和を$M$円以下にしたいです。&lt;/li>
+&lt;li>$x$を最大で何円にできるかを求めてください。ただし、上限が存在しない場合、そのことを出力します。&lt;/li>
+&lt;li>$N \leq 2 \times 10^{5}, M \leq 2 \times 10^{14}$&lt;/li>
+&lt;/ul>
+&lt;h4 id="考えたこと">考えたこと
+&lt;/h4>&lt;p>まず、上限が無限に大きくできるときは、どのような条件が成り立つかを考えます。&lt;/p>
+&lt;p>$x \geq \max{A_i}$ を満たす$x$では、補助額の総和は同じです。したがって、$x = \max{A_i}$ のとき予算をオーバーしないなら、上限は存在しません。また、同様に上限が存在するなら必ず、$x &amp;lt; \max{A_i}$が成り立ちます。&lt;/p>
+&lt;p>上限が存在し、それを$m$であるとします。$[0, \max{A_i})$の範囲で二分探索を行えば、補助額の総和が$M$円以下の補助額の上限値の最大値は、$m$と一致します。したがって、$O(N \log{\max{A_i}})$ で答えが計算できます。&lt;/p>
+&lt;h3 id="d問題">D問題
+&lt;/h3>&lt;h4 id="問題概要-1">問題概要
+&lt;/h4>&lt;ul>
+&lt;li>2人のプレイヤーがじゃんけんをします。相手が出した手を事前に知っていて、それは$S = S_1 S_2 \dots S_N$で表されます。&lt;/li>
+&lt;li>私は、以下の条件を満たすように手を出す必要があります。それを満たすような手の列の内、じゃんけんで勝った回数の最大値を計算してください。
+&lt;ul>
+&lt;li>私は一度もじゃんけんに負けない。&lt;/li>
+&lt;li>私が$i$回目に出す手と$i + 1$回目に出す手は異なる。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>$N \leq 2 \times 10^{5}$&lt;/li>
+&lt;/ul>
+&lt;h4 id="考えたこと-1">考えたこと
+&lt;/h4>&lt;p>1手目から順に出す手を決めていくとします。このとき、$i$手目を制限するのは、相手の手と自分が$i - 1$手目だけです。&lt;/p>
+&lt;p>そこで、$i$ 手目がグー、チョキ、パーそれぞれでの勝った回数の最大値が計算できれば$i + 1$手目でグー、チョキ、パーそれぞれでの勝った回数の最大値が計算できます。&lt;/p>
+&lt;p>これは適当な動的計画法で$O(N)$で可能です。&lt;a class="link" href="https://atcoder.jp/contests/abc365/submissions/56260751" target="_blank" rel="noopener"
+>提出コード&lt;/a>&lt;/p>
+&lt;h3 id="e問題">E問題
+&lt;/h3>&lt;h4 id="問題概要-2">問題概要
+&lt;/h4>&lt;ul>
+&lt;li>長さ$N$の数列$A = (A_1, A_2, \dots, A_N)$が与えられます。以下の値を計算してください。&lt;/li>
+&lt;/ul>
+&lt;p>$$
+\sum_{i = 1}^{N - 1} \sum_{j = i + 1}^{N} {A_i \oplus A_{i + 1} \oplus \dots \oplus A_{j}}
+$$&lt;/p>
+&lt;ul>
+&lt;li>$N \leq 2\times 10^{5}, 1 \leq A_i \leq 10^{8}$&lt;/li>
+&lt;/ul>
+&lt;h4 id="考えたこと-2">考えたこと
+&lt;/h4>&lt;p>まず、各bit毎に考え、それらを後から合算して答えを計算することにします。&lt;/p>
+&lt;p>$i$ bit 目を取り出して $B_1, B_2, B_3, \dots, B_N (B_j = 0, 1)$とします。&lt;/p>
+&lt;p>$k$ 項目を右端とするような部分排他的論理和について考えます。きちんと列挙すると、$\oplus_{i=1}^{k} B_i, \oplus_{i=2}^{k} B_i, \dots, \oplus_{i=k-1}^{k} B_i$のように書けます。&lt;/p>
+&lt;p>同様に、$k + 1$ 項目を右端とするような部分排他的論理和について考えます。きちんと列挙すると、$\oplus_{i=1}^{k+1} B_i, \oplus_{i=2}^{k+1} B_i, \dots, \oplus_{i=k}^{k+1} B_i$のように書けます。&lt;/p>
+&lt;p>それぞれ $S_k, S_{k + 1}$ とします。$S_{k + 1} = \lbrace a \oplus B_{k+1} | a \in S_k \rbrace \cup \lbrace B_k \oplus B_{k + 1} \rbrace$ が成り立ちます。(重複した値も別々に考えています)&lt;/p>
+&lt;p>これら部分排他的論理和は当然 $0, 1$ のいずれかしか取らないので、$\text{dp} \lbrack i \rbrack \lbrack T | F \rbrack$ を$i$項目を右端とする部分排他的論理和で$T, F$の数であるとするような動的計画法によって、$O(N)$ で計算できます。答えは$\displaystyle \sum_{i} \text{dp} \lbrack i \rbrack \lbrack T \rbrack$ です。単一項の部分和の処理によって、少し変わる場合がありますが、適当に補正すればよいです。&lt;/p>
+&lt;p>これで、全体で$O(N \log{A})$ で答えを計算でき、これは十分実行時間制限に間に合います。&lt;a class="link" href="https://atcoder.jp/contests/abc365/submissions/56271056" target="_blank" rel="noopener"
+>提出コード&lt;/a>&lt;/p></description></item></channel></rss>
